@@ -1,12 +1,12 @@
 {
-  "name": "generator-spa",
+  "name": "generator-SPA",
   "version": "0.0.0",
   "description": "A quick single-page application generator for Yeoman",
   "keywords": [
     "yeoman-generator"
   ],
-  "homepage": "https://github.com/1Copenut/generator-spa",
-  "bugs": "https://github.com/1Copenut/generator-spa/issues",
+  "homepage": "https://github.com/1Copenut/generator-SPA",
+  "bugs": "https://github.com/1Copenut/generator-SPA/issues",
   "author": {
     "name": "",
     "email": "",
@@ -15,7 +15,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/1Copenut/generator-spa.git"
+    "url": "git://github.com/1Copenut/generator-SPA.git"
   },
   "scripts": {
     "test": "mocha"

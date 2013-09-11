@@ -32,7 +32,7 @@ $ npm install -g generator-spa
 Finally, initiate the generator:
 
 ```
-$ yo spa
+$ yo SPA
 ```
 
 ### Getting To Know Yeoman
