@@ -1,5 +1,5 @@
 {
-  "name": "<%= _.slugify(appname)",
+  "name": "singlepageapp",
   "version": "0.0.0",
   "dependencies": {},
 	"devDependencies": {
@@ -8,8 +8,6 @@
     "grunt-contrib-jshint": "~0.5.3",
     "express": "~3.2.4",
     "consolidate": "~0.9.1",
-    "grunt-jquerybuilder": "~0.1.4",
-    "grunt-bootstrap": "~0.1.0",
     "grunt-contrib-compass": "~0.2.0"
 	},
 	"engines": {
