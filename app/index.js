@@ -34,12 +34,18 @@ SpaGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
-// Copy the package.json to get my local Express server, Node modules
+// Copy the package.json file to grab Node modules
 SpaGenerator.prototype.packageJSON = function packageJSON() {
   this.template('_package.json', 'package.json');
 };
 
-// Copy the Gruntfile.js
+// Grab Bower dependencies
+SpaGenerator.prototype.bower = function bower() {
+	this.copy('bowerrc', '.bowerrc');
+	this.copy('_bower.json', 'bower.json');
+}
+
+// Drop in the Gruntfile.js
 SpaGenerator.prototype.gruntfile = function gruntfile() {
 	this.template('Gruntfile.js');
 }
@@ -57,7 +63,7 @@ SpaGenerator.prototype.app = function app() {
 	this.mkdir('test');
 
   // this.copy('_package.json', 'package.json');
-  this.copy('_bower.json', 'bower.json');
+  // this.copy('_bower.json', 'bower.json');
 };
 
 SpaGenerator.prototype.projectfiles = function projectfiles() {
