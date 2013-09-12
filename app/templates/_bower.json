@@ -7,7 +7,9 @@
 		"modernizr": "~2.6.2",
 		"yepnope": "~1.5.4",
 		"intentionjs": "~0.9.9",
-		"underscore": "~1.5.2"
+		"underscore": "~1.5.2",
+		"requirejs": "~2.1.8",
+		"twig.js": "~0.5.9"
 	}
 }
 

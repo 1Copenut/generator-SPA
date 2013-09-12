@@ -11,6 +11,7 @@ module.exports = function (grunt) {
 					module: true,
 					document: true,
 					define: true
+				}
 			}
 		},
 		
@@ -25,9 +26,7 @@ module.exports = function (grunt) {
 	});
 
 	grunt.loadNpmTasks("grunt-contrib-jshint");
-	grunt.loadNpmTasks("grunt-jquerybuilder");
-	grunt.loadNpmTasks("grunt-bootstrap");
 	grunt.loadNpmTasks("grunt-contrib-compass");
 	
-	grunt.registerTask("default", ["compass"]);
+	// grunt.registerTask("default", ["compass"]);
 };
