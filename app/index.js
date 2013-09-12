@@ -94,8 +94,8 @@ SpaGenerator.prototype.requirejs = function requirejs() {
 	this.write('app/scripts/app.js', [
 		'/*global define */',
 		'define([], function () {',
-		'		\'use strict\';\n',
-		'		return \'\\\'Allo \\\'Allo!\';',
+		' \'use strict\';\n',
+		' return \'\\\'Allo \\\'Allo!\';',
 		'});'
 	].join('\n'));
 
