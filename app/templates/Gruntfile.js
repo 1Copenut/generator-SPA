@@ -2,8 +2,19 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON("package.json"),
 		
+		express: {
+			options: {
+			  // Override defaults here
+			},
+			dev: {
+			  options: {
+			    script: 'server/server.js'
+			  }
+			}
+		},
+		
 		jshint: {
-			files: ["public/js/*.js", "!public/js/config.js"],
+			files: ["app/scripts/*.js", "!app/scripts/config.js"],
 			options: {
 				globals: {
 					jQuery: true,
@@ -32,12 +43,21 @@ module.exports = function (grunt) {
 	      files: ['app/styles/sass/*.scss'],
 	      tasks: ['compass']
 	    }
-	  }
+	  },
+	
+		open : {
+			dev : {
+			  path: 'http://127.0.0.1:3000/',
+			  app: 'Google Chrome'
+			}
+		}
 	});
 
+	grunt.loadNpmTasks('grunt-express-server');
+	grunt.loadNpmTasks('grunt-open');
 	grunt.loadNpmTasks("grunt-contrib-jshint");
 	grunt.loadNpmTasks("grunt-contrib-compass");
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	
-	// grunt.registerTask("default", ["compass"]);
+	grunt.registerTask("server", ["express:dev", "open:dev", "watch"]);
 };

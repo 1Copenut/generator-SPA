@@ -119,4 +119,8 @@ SpaGenerator.prototype.app = function app() {
 	
 	// Create the test directory
 	this.mkdir('test');
+	
+	// Create the server directory and copy the server.js file
+	this.mkdir('server');
+	this.copy('server.js', 'server/server.js')
 };
