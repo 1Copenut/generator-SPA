@@ -22,11 +22,22 @@ module.exports = function (grunt) {
 					cssDir: "app/styles/css"
 				}
 			}
-		}
+		},
+		
+		watch: {
+	    options: {
+	      livereload: true
+	    },
+	    css: {
+	      files: ['app/styles/sass/*.scss'],
+	      tasks: ['compass']
+	    }
+	  }
 	});
 
 	grunt.loadNpmTasks("grunt-contrib-jshint");
 	grunt.loadNpmTasks("grunt-contrib-compass");
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	
 	// grunt.registerTask("default", ["compass"]);
 };
