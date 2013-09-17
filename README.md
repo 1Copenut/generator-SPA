@@ -23,5 +23,12 @@ Initiate:
 $ yo SPA
 ```
 
+## Don't forget Twig
+I use Twig for my templating needs. It's not available as a Grunt plugin yet, so you'll need to add it manually. This command may require you to run as sudo.
+
+```
+$ npm install twig
+```
+
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
