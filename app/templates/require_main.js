@@ -14,6 +14,9 @@ require.config({
     bootstrapTooltip: '../bower_components/bootstrap/assets/js/tooltip',
     bootstrapTransition: '../bower_components/bootstrap/assets/js/transition',
 		underscore: '../bower_components/underscore/underscore',
+		intention: '../bower_components/intentionjs/intention',
+		yepnope: '../yepnope/yepnope',
+		twig: '../bower_components/twig.js/twig'
 	},
 	
 	shim: {
