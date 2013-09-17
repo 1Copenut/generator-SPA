@@ -3,13 +3,22 @@ A generator for [Yeoman](http://yeoman.io). This generator has been built for th
 
 
 ## Getting Started
-To install generator-spa from npm, run:
+This is a non-sanctioned generator for the moment. First, make sure you have [Yeoman](http://yeoman.io), [Bower](http:bower.io), and [Grunt](http:gruntjs.com) installed. Then clone the generator into a local repo:
 
 ```
-$ npm install -g generator-spa
+$ git clone https://github.com/1Copenut/generator-SPA.git
 ```
 
-Finally, initiate the generator:
+## Make a new directory, and symlink the generator
+The npm link will create a local link so you can run the yo SPA command anytime on your local machine. This command may require you to run as sudo.
+
+```
+$ mkdir newname && cd newname && npm link
+``
+
+## Enough already, how do I use the generator?
+
+Initiate:
 
 ```
 $ yo SPA
