@@ -1,5 +1,5 @@
-# generator-spa 
-A generator for [Yeoman](http://yeoman.io). This generator has been built for the designer looking to build interactive wireframes quickly. It includes a Node/Express server instance for working AJAX requests.
+# generator-SPA
+This generator has been built for the designer looking to build interactive wireframes quickly. It includes a Node/Express server instance for working AJAX requests.
 
 
 ## Getting Started
@@ -14,10 +14,9 @@ The npm link will create a local link so you can run the yo SPA command anytime 
 
 ```
 $ mkdir newname && cd newname && npm link
-``
+```
 
 ## Enough already, how do I use the generator?
-
 Initiate:
 
 ```
@@ -25,5 +24,4 @@ $ yo SPA
 ```
 
 ## License
-
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
