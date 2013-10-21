@@ -30,5 +30,12 @@ I use Twig for my templating needs. It's not available as a Grunt plugin yet, so
 $ npm install twig
 ```
 
+## Fire up Express, and you&rsquo;re off
+After the generator is done creating files, typing the line below will start an Express server instance and open a new browser window in Chrome automatically.
+
+```
+$ grunt server
+```
+
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
