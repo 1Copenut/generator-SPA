@@ -24,7 +24,7 @@ SpaGenerator.prototype.askFor = function askFor() {
 
 	var prompts = [{
 		name: 'spaName',
-		message: 'Would you like to call this single-page app?'
+		message: 'What would you like to call this single-page app?'
 	}];
 
 	this.prompt(prompts, function (props) {
@@ -59,8 +59,8 @@ SpaGenerator.prototype.projectfiles = function projectfiles() {
 // Create the reset and main stylesheets
 SpaGenerator.prototype.styles = function styles() {
 	this.copy('main.scss', 'app/styles/sass/main.scss');
+	this.copy('_reset.scss', 'app/styles/sass/_reset.scss');
 	this.copy('main.css', 'app/styles/css/main.css');
-	this.copy('reset.css', 'app/styles/css/reset.css');
 };
 
 // Include the HTML5 Boilerplate files
