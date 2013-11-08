@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
 	grunt.initConfig({
-		pkg: grunt.file.readJSON("package.json"),
+		pkg: grunt.file.readJSON('package.json'),
 		
 		express: {
 			options: {
@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 		},
 		
 		jshint: {
-			files: ["app/scripts/*.js", "!app/scripts/main.js"],
+			files: ['app/scripts/*.js', '!app/scripts/main.js'],
 			options: {
 				globals: {
 					jQuery: true,
@@ -60,9 +60,9 @@ module.exports = function (grunt) {
 
 	grunt.loadNpmTasks('grunt-express-server');
 	grunt.loadNpmTasks('grunt-open');
-	grunt.loadNpmTasks("grunt-contrib-jshint");
-	grunt.loadNpmTasks("grunt-contrib-sass");
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	
-	grunt.registerTask("server", ["express:dev", "open:dev", "watch"]);
+	grunt.registerTask('server', ['express:dev', 'open:dev', 'watch']);
 };
