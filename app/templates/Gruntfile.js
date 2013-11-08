@@ -53,7 +53,7 @@ module.exports = function (grunt) {
 		open : {
 			dev : {
 			  path: 'http://127.0.0.1:3000/',
-			  app: 'Google Chrome'
+			  app: 'Google Chrome Canary'
 			}
 		}
 	});
