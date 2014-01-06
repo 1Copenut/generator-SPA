@@ -117,6 +117,15 @@ SpaGenerator.prototype.testRequirejs = function testRequirejs() {
 		'data-main': 'scripts/main'
 	});
 
+	// Add a basic AMD module for testing
+	this.write('test/scripts/specs/test.js', [
+		'/*global define */',
+		'define([], function () {',
+		' \'use strict\';\n',
+		' return \'\\\'Allo \\\'Allo!\';',
+		'});'
+	].join('\n'));
+
 	// Add the test main.js file
 	this.template('require_testMain.js', 'test/scripts/main.js');
 }; 

@@ -18,7 +18,8 @@ require(['chai'], function (chai) {
 	window.expect = chai.expect;
 	mocha.setup('bdd');
 
-	require(['specs/test'], function() {
+	require(['specs/test'], function(test) {
 		mocha.run();
+		console.log(test);
 	});
 });
