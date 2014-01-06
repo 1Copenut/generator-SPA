@@ -16,12 +16,13 @@ require.config({
 		underscore: '../bower_components/underscore/underscore',
 		intention: '../bower_components/intentionjs/intention',
 		yepnope: '../yepnope/yepnope',
-		twig: '../bower_components/twig.js/twig'
+		twig: '../bower_components/twig.js/twig',
+		squire: '../bower_components/squire/src/Squire'
 	},
 	
 	shim: {
 		underscore: {
-			exports: "_"
+			exports: '_'
 		},
 		bootstrapAffix: {
         deps: ['jquery']

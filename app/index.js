@@ -56,11 +56,12 @@ SpaGenerator.prototype.projectfiles = function projectfiles() {
 	this.copy('jshintrc', '.jshintrc');
 };
 
-// Create the reset and main stylesheets
+// Create the reset, main and mocha stylesheets
 SpaGenerator.prototype.styles = function styles() {
 	this.copy('main.scss', 'app/styles/sass/main.scss');
 	this.copy('_reset.scss', 'app/styles/sass/_reset.scss');
 	this.copy('main.css', 'app/styles/css/main.css');
+	this.copy('mocha.css', 'test/css/mocha.css');
 };
 
 // Include the HTML5 Boilerplate files
@@ -77,10 +78,16 @@ SpaGenerator.prototype.h5bp = function h5bp() {
 	this.copy('htaccess', 'app/.htaccess');
 };
 
-// Create the index file baseline index file
+// Create the baseline index file
 SpaGenerator.prototype.createIndex = function createIndex() {
 	this.indexFile = this.readFileAsString(path.join(this.sourceRoot(), 'index.html'));
 	this.indexFile = this.engine(this.indexFile, this);
+};
+
+// Create the testing index file
+SpaGenerator.prototype.createTestIndex = function createTextIndex() {
+	this.indexTestFile = this.readFileAsString(path.join(this.sourceRoot(), 'testIndex.html'));
+	this.indexTestFile = this.engine(this.indexTestFile, this);
 };
 
 // Set up the Require.js structure
@@ -103,6 +110,17 @@ SpaGenerator.prototype.requirejs = function requirejs() {
 	this.template('require_main.js', 'app/scripts/main.js');
 };
 
+// Set up the testing Require.js structure
+SpaGenerator.prototype.testRequirejs = function testRequirejs() {
+	// Wire the testIndex file for Require.js
+	this.indexTestFile = this.appendScripts(this.indexTestFile, 'scripts/main.js', ['../app/bower_components/requirejs/require.js'], {
+		'data-main': 'scripts/main'
+	});
+
+	// Add the test main.js file
+	this.template('require_testMain.js', 'test/scripts/main.js');
+}; 
+
 // Create the app structure
 SpaGenerator.prototype.app = function app() {
 	// Create the core app directory
@@ -119,6 +137,12 @@ SpaGenerator.prototype.app = function app() {
 	
 	// Create the test directory
 	this.mkdir('test');
+	this.mkdir('test/css');
+	this.mkdir('test/scripts');
+	this.mkdir('test/scripts/specs');
+
+	// Add the test index file
+	this.write('test/index.html', this.indexTestFile);
 	
 	// Create the server directory and copy the server.js file
 	this.mkdir('server');

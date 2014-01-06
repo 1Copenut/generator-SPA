@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 		},
 		
 		jshint: {
-			files: ['app/scripts/*.js', '!app/scripts/main.js'],
+			files: ['app/scripts/**/*.js', '!app/scripts/main.js'],
 			options: {
 				globals: {
 					jQuery: true,
@@ -42,14 +42,14 @@ module.exports = function (grunt) {
 	      livereload: true
 	    },
 	    css: {
-	      files: ['app/styles/sass/*.scss'],
+	      files: ['app/styles/sass/**/*.scss'],
 	      tasks: ['sass']
 	    },
 			html: {
-				files: ['app/*.html']
+				files: ['app/**/*.html']
 			},
 			scripts: {
-				files: ['app/scripts/*.js', '!app/scripts/main.js'],
+				files: ['app/scripts/**/*.js', '!app/scripts/main.js'],
 				tasks: ['jshint'],
 				options: {
 					spawn: false
@@ -62,7 +62,14 @@ module.exports = function (grunt) {
 			  path: 'http://127.0.0.1:3000/',
 			  app: 'Google Chrome Canary'
 			}
-		}
+		},
+
+		mocha: {
+			browser: ['test/**/*.html'],
+			options: {
+				reporter: 'Spec',
+				run: true
+			}
 	});
 
 	grunt.loadNpmTasks('grunt-express-server');
@@ -70,6 +77,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-mocha');
 	
 	grunt.registerTask('server', ['express:dev', 'open:dev', 'watch']);
+	grunt.registerTask('test', ['mocha']);
 };
