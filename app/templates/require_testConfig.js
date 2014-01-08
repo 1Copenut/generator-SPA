@@ -1,6 +1,6 @@
 (function() {
 	// test mode -- 'tdd', 'bdd-should', or 'bdd-expect'
-	var mode = 'tdd';
+	var mode = 'bdd-expect';
 
 	if ( mode === 'tdd' ) {
 		window.assert = chai.assert;
