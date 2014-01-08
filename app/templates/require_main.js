@@ -1,4 +1,14 @@
+(function() {
+var testDirectory = window.location.href.match('/test');
+
+
+}());
+
+
+
 require.config({
+	deps: [isTest ? '../../test/scripts/config' : 'main'],
+
 	paths: {
 		jquery: '../bower_components/jquery/jquery',
 		bootstrapAffix: '../bower_components/bootstrap/js/affix',
@@ -17,7 +27,8 @@ require.config({
 		intention: '../bower_components/intentionjs/intention',
 		yepnope: '../yepnope/yepnope',
 		twig: '../bower_components/twig.js/twig',
-		squire: '../bower_components/squire/src/Squire'
+		squire: '../bower_components/squire/src/Squire',
+		chai: '../bower_components/chai/chai'
 	},
 	
 	shim: {
