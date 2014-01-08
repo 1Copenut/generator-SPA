@@ -37,7 +37,7 @@ $ grunt server
 ```
 
 ## Big Thank You
-[Rebecca Murphey](https://twitter.com/rmurphey) was gracious enough to post her entire repo for the [Writing Testable Javascript](http://alistapart.com/article/writing-testable-javascript) article, which I used to structure my test directory and all of the Require.js plumbing. I encourage everyone to read and study both the article and code--they will change the way you think about Javascript and testing.
+[Rebecca Murphey](https://twitter.com/rmurphey) was gracious enough to post her [entire repo](https://github.com/rmurphey/testable-javascript) for the [Writing Testable Javascript](http://alistapart.com/article/writing-testable-javascript) article, which I used to structure my test directory and all of the Require.js plumbing. I encourage everyone to read and study both the article and code--they will change the way you think about Javascript and testing.
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
