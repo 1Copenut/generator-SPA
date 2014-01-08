@@ -1,5 +1,5 @@
 (function() {
-var isTest = window.location.href.match('/test');
+	var isTest = window.location.href.match('/test');
 
 	require.config({
 		deps: [isTest ? '../../test/scripts/config' : 'main'],
