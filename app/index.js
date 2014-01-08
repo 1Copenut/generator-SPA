@@ -93,11 +93,11 @@ SpaGenerator.prototype.createTestIndex = function createTextIndex() {
 // Set up the Require.js structure
 SpaGenerator.prototype.requirejs = function requirejs() {
 	// Wire the index file for Require.js
-	this.indexFile = this.appendScripts(this.indexFile, 'scripts/main.js', ['bower_components/requirejs/require.js'], {
-		'data-main': 'scripts/main'
+	this.indexFile = this.appendScripts(this.indexFile, 'scripts/config.js', ['bower_components/requirejs/require.js'], {
+		'data-main': 'scripts/config'
 	});
 	
-	// Add a basic AMD module for testing
+	// Add a basic AMD module for app
 	this.write('app/scripts/app.js', [
 		'/*global define */',
 		'define([], function () {',
@@ -106,19 +106,22 @@ SpaGenerator.prototype.requirejs = function requirejs() {
 		'});'
 	].join('\n'));
 
-	// Add the main.js file
-	this.template('require_main.js', 'app/scripts/main.js');
+	// Add the config.js file
+	this.template('require_config.js', 'app/scripts/config.js');
+
+	// Copy the main.js file
+	this.copy('main.js', 'app/scripts/main.js');
 };
 
 // Set up the testing Require.js structure
 SpaGenerator.prototype.testRequirejs = function testRequirejs() {
 	// Wire the testIndex file for Require.js
-	this.indexTestFile = this.appendScripts(this.indexTestFile, 'scripts/main.js', ['../app/bower_components/requirejs/require.js'], {
-		'data-main': '../app/scripts/main'
+	this.indexTestFile = this.appendScripts(this.indexTestFile, 'test/scripts/config.js', ['../app/bower_components/requirejs/require.js'], {
+		'data-main': '../app/scripts/config'
 	});
 
 	// Add a basic AMD module for testing
-	this.write('test/scripts/specs/test.js', [
+	this.write('test/scripts/tests/test.js', [
 		'/*global define */',
 		'define([], function () {',
 		' \'use strict\';\n',
@@ -127,7 +130,10 @@ SpaGenerator.prototype.testRequirejs = function testRequirejs() {
 	].join('\n'));
 
 	// Add the test main.js file
-	this.template('require_testMain.js', 'test/scripts/main.js');
+	this.template('require_testConfig.js', 'test/scripts/config.js');
+
+	// Copy the list of tests
+	this.copy('list_of_tests.js', 'test/scripts/list_of_tests.js');
 }; 
 
 // Create the app structure
@@ -148,7 +154,8 @@ SpaGenerator.prototype.app = function app() {
 	this.mkdir('test');
 	this.mkdir('test/css');
 	this.mkdir('test/scripts');
-	this.mkdir('test/scripts/specs');
+	this.mkdir('test/fixtures');
+	this.mkdir('test/scripts/tests');
 
 	// Add the test index file
 	this.write('test/index.html', this.indexTestFile);

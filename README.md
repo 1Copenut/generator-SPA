@@ -3,25 +3,23 @@ This generator has been built for the designer looking to build interactive wire
 
 
 ## Getting Started
-This is a non-sanctioned generator for the moment. First, make sure you have [Yeoman](http://yeoman.io), [Bower](http:bower.io), and [Grunt](http:gruntjs.com) installed. Then clone the generator into a local repo:
+This is a non-sanctioned generator for the moment. First, make sure you have [Yeoman](http://yeoman.io), [Bower](http:bower.io), and [Grunt](http:gruntjs.com) installed. Create or cd into your local dev directory, ~/dev for instance, then clone the repo:
 
 ```
 $ git clone https://github.com/1Copenut/generator-SPA.git
 ```
 
-## Make a new directory, and symlink the generator
-The npm link will create a local link so you can run the yo SPA command anytime on your local machine. This command may require you to run as sudo.
+cd into the generator-SPA directory and create the symbolic link. This command may require you to run as sudo.
 
 ```
-$ mkdir newname && cd newname && npm link
+cd generator-SPA && npm link
 ```
 
-## Enough already, how do I use the generator?
-Initiate:
+## Make a new directory and run the generator
+The previously created symbolic link means you can create a new directory anytime and run the generator. This command may require you to run as sudo.
 
 ```
-$ yo SPA
-```
+$ mkdir newname && yo SPA
 
 ## Don't forget Twig
 I use Twig for my templating needs. It's not available as a Grunt plugin yet, so you'll need to add it manually. This command may require you to run as sudo.
@@ -36,6 +34,9 @@ After the generator is done creating files, typing the line below will start an 
 ```
 $ grunt server
 ```
+
+## Big Thank You
+[Rebecca Murphey](https://twitter.com/rmurphey) was gracious enough to post her entire repo for the [Writing Testable Javascript](http://alistapart.com/article/writing-testable-javascript) article, which I used to structure my test directory and all of the Require.js plumbing. I encourage everyone to read and study both the article and code--they will change the way you think about Javascript and testing.
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)

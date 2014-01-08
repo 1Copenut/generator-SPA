@@ -70,6 +70,7 @@ module.exports = function (grunt) {
 				reporter: 'Spec',
 				run: true
 			}
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-express-server');

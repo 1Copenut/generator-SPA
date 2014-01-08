@@ -1,25 +1,28 @@
-require.config({
-  paths: {
-    'jquery': '../../app/bower_components/jquery/jquery',
-		'underscore': '../../app/bower_components/underscore/underscore',
-		'squire': '../../app/bower_components/squire/src/Squire',
-		'chai': '../../app/bower_components/chai/chai'
-  },
+(function() {
+	// test mode -- 'tdd', 'bdd-should', or 'bdd-expect'
+	var mode = 'tdd';
 
-	shim: {
-		underscore: {
-			exports: '_'
-		}
+	if ( mode === 'tdd' ) {
+		window.assert = chai.assert;
 	}
-});
 
-require(['chai'], function (chai) {
-	chai.should();
-	window.expect = chai.expect;
-	mocha.setup('bdd');
+	if ( mode === 'bdd-should' ) {
+		window.should = chai.should();
+	}
 
-	require(['specs/test'], function(test) {
-		mocha.run();
-		console.log(test);
+	if ( mode === 'bdd-expect' ) {
+		window.expect = chai.expect;
+	}
+
+	mocha.setup({
+		ui: mode.split('-')[0],
+		globals: [ 'XMLHttpRequest' ]
 	});
-});
+
+	require( [ 'list_of_tests' ], function( lot ) {
+		require( lot, function() {
+			mocha.run();
+			console.log(test);
+		});
+	});
+}());
