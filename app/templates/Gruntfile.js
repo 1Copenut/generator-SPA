@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 		},
 		
 		jshint: {
-			files: ['app/scripts/**/*.js', '!app/scripts/main.js'],
+			files: ['app/scripts/**/*.js', '!app/scripts/config.js'],
 			options: {
 				globals: {
 					jQuery: true,
@@ -49,7 +49,7 @@ module.exports = function (grunt) {
 				files: ['app/**/*.html']
 			},
 			scripts: {
-				files: ['app/scripts/**/*.js', '!app/scripts/main.js'],
+				files: ['app/scripts/**/*.js', '!app/scripts/config.js'],
 				tasks: ['jshint'],
 				options: {
 					spawn: false
