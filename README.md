@@ -22,8 +22,6 @@ The previously created symbolic link means you can create a new directory anytim
 $ mkdir newname && yo SPA
 ```
 
-```
-
 ## Fire up Express, and you&rsquo;re off
 After the generator is done creating files, typing the line below will start an Express server instance and open a new browser window in Chrome automatically.
 
