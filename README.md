@@ -22,11 +22,6 @@ The previously created symbolic link means you can create a new directory anytim
 $ mkdir newname && yo SPA
 ```
 
-## Don't forget Twig
-I use Twig for my templating needs. It's not available as a Grunt plugin yet, so you'll need to add it manually. This command may require you to run as sudo.
-
-```
-$ npm install twig
 ```
 
 ## Fire up Express, and you&rsquo;re off
