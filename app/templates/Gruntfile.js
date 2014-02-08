@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
 	grunt.initConfig({
-		pkg: grunt.file.readJSON("package.json"),
+		pkg: grunt.file.readJSON('package.json'),
 		
 		express: {
 			options: {
@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 		},
 		
 		jshint: {
-			files: ["app/scripts/*.js", "!app/scripts/config.js"],
+			files: ['app/scripts/**/*.js', '!app/scripts/config.js'],
 			options: {
 				globals: {
 					jQuery: true,
@@ -26,11 +26,13 @@ module.exports = function (grunt) {
 			}
 		},
 		
-		compass: {
+		sass: {
 			dev: {
 				options: {
-					sassDir: "app/styles/sass",
-					cssDir: "app/styles/css"
+					sourcemap: true
+				},
+				files: {
+					'app/styles/css/main.css': 'app/styles/sass/main.scss'
 				}
 			}
 		},
@@ -40,27 +42,44 @@ module.exports = function (grunt) {
 	      livereload: true
 	    },
 	    css: {
-	      files: ['app/styles/sass/*.scss'],
-	      tasks: ['compass']
+	      files: ['app/styles/sass/**/*.scss'],
+	      tasks: ['sass']
 	    },
 			html: {
-				files: ['app/*.html']
+				files: ['app/**/*.html']
+			},
+			scripts: {
+				files: ['app/scripts/**/*.js', '!app/scripts/config.js'],
+				tasks: ['jshint'],
+				options: {
+					spawn: false
+				}
 			}
 	  },
 	
 		open : {
 			dev : {
 			  path: 'http://127.0.0.1:3000/',
-			  app: 'Google Chrome'
+			  app: 'Google Chrome Canary'
+			}
+		},
+
+		mocha: {
+			browser: ['test/**/*.html'],
+			options: {
+				reporter: 'Spec',
+				run: true
 			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-express-server');
 	grunt.loadNpmTasks('grunt-open');
-	grunt.loadNpmTasks("grunt-contrib-jshint");
-	grunt.loadNpmTasks("grunt-contrib-compass");
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-mocha');
 	
-	grunt.registerTask("server", ["express:dev", "open:dev", "watch"]);
+	grunt.registerTask('server', ['express:dev', 'open:dev', 'watch']);
+	grunt.registerTask('test', ['mocha']);
 };

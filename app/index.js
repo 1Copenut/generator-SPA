@@ -24,7 +24,7 @@ SpaGenerator.prototype.askFor = function askFor() {
 
 	var prompts = [{
 		name: 'spaName',
-		message: 'Would you like to call this single-page app?'
+		message: 'What would you like to call this single-page app?'
 	}];
 
 	this.prompt(prompts, function (props) {
@@ -56,11 +56,12 @@ SpaGenerator.prototype.projectfiles = function projectfiles() {
 	this.copy('jshintrc', '.jshintrc');
 };
 
-// Create the reset and main stylesheets
+// Create the reset, main and mocha stylesheets
 SpaGenerator.prototype.styles = function styles() {
 	this.copy('main.scss', 'app/styles/sass/main.scss');
+	this.copy('_reset.scss', 'app/styles/sass/_reset.scss');
 	this.copy('main.css', 'app/styles/css/main.css');
-	this.copy('reset.css', 'app/styles/css/reset.css');
+	this.copy('mocha.css', 'test/css/mocha.css');
 };
 
 // Include the HTML5 Boilerplate files
@@ -77,20 +78,26 @@ SpaGenerator.prototype.h5bp = function h5bp() {
 	this.copy('htaccess', 'app/.htaccess');
 };
 
-// Create the index file baseline index file
+// Create the baseline index file
 SpaGenerator.prototype.createIndex = function createIndex() {
 	this.indexFile = this.readFileAsString(path.join(this.sourceRoot(), 'index.html'));
 	this.indexFile = this.engine(this.indexFile, this);
 };
 
+// Create the testing index file
+SpaGenerator.prototype.createTestIndex = function createTextIndex() {
+	this.indexTestFile = this.readFileAsString(path.join(this.sourceRoot(), 'testIndex.html'));
+	this.indexTestFile = this.engine(this.indexTestFile, this);
+};
+
 // Set up the Require.js structure
 SpaGenerator.prototype.requirejs = function requirejs() {
 	// Wire the index file for Require.js
-	this.indexFile = this.appendScripts(this.indexFile, 'scripts/main.js', ['bower_components/requirejs/require.js'], {
-		'data-main': 'scripts/main'
+	this.indexFile = this.appendScripts(this.indexFile, 'scripts/config.js', ['bower_components/requirejs/require.js'], {
+		'data-main': 'scripts/config'
 	});
 	
-	// Add a basic AMD module for testing
+	// Add a basic AMD module for app
 	this.write('app/scripts/app.js', [
 		'/*global define */',
 		'define([], function () {',
@@ -99,9 +106,35 @@ SpaGenerator.prototype.requirejs = function requirejs() {
 		'});'
 	].join('\n'));
 
-	// Add the main.js file
-	this.template('require_main.js', 'app/scripts/main.js');
+	// Add the config.js file
+	this.template('require_config.js', 'app/scripts/config.js');
+
+	// Copy the main.js file
+	this.copy('main.js', 'app/scripts/main.js');
 };
+
+// Set up the testing Require.js structure
+SpaGenerator.prototype.testRequirejs = function testRequirejs() {
+	// Wire the testIndex file for Require.js
+	this.indexTestFile = this.appendScripts(this.indexTestFile, 'test/scripts/config.js', ['../app/bower_components/requirejs/require.js'], {
+		'data-main': '../app/scripts/config'
+	});
+
+	// Add a basic AMD module for testing
+	this.write('test/scripts/tests/test.js', [
+		'/*global define */',
+		'define([], function () {',
+		' \'use strict\';\n',
+		' return \'\\\'Allo \\\'Allo!\';',
+		'});'
+	].join('\n'));
+
+	// Add the test main.js file
+	this.template('require_testConfig.js', 'test/scripts/config.js');
+
+	// Copy the list of tests
+	this.copy('list_of_tests.js', 'test/scripts/list_of_tests.js');
+}; 
 
 // Create the app structure
 SpaGenerator.prototype.app = function app() {
@@ -119,6 +152,13 @@ SpaGenerator.prototype.app = function app() {
 	
 	// Create the test directory
 	this.mkdir('test');
+	this.mkdir('test/css');
+	this.mkdir('test/scripts');
+	this.mkdir('test/fixtures');
+	this.mkdir('test/scripts/tests');
+
+	// Add the test index file
+	this.write('test/index.html', this.indexTestFile);
 	
 	// Create the server directory and copy the server.js file
 	this.mkdir('server');
