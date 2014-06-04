@@ -1,12 +1,13 @@
 var express = require("express"),
 		app = express(),
 		twig = require("twig");
+		baseDir = __dirname + "/../";
 		// d_products = require("../data/d_products"),
 		// d_artists = require("../data/d_artists");
 
-app.use( express.static( __dirname + "/../app" ) );
-app.set( "view engine", "twig" );
-app.set( "views", __dirname + "/../app/templates" );
+app.use("/", express.static( baseDir + "app"));
+app.set("view engine", "twig");
+app.set("views", baseDir + "app/templates");
 
 // // map products to artists by cross-linking data
 // for ( var id in d_products.products ) {
@@ -32,6 +33,9 @@ app.set( "views", __dirname + "/../app/templates" );
 // app.get( "/product/:id", function( req, res ) {
 // 	res.render( "detail", d_products.products[ req.params.id ] );
 // });
+
+// Test directory now active
+app.use("/test", express.static(baseDir + "test"));
 
 app.listen( 3000 );
 console.log('App is running on port 3000');

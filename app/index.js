@@ -116,8 +116,8 @@ SpaGenerator.prototype.requirejs = function requirejs() {
 // Set up the testing Require.js structure
 SpaGenerator.prototype.testRequirejs = function testRequirejs() {
 	// Wire the testIndex file for Require.js
-	this.indexTestFile = this.appendScripts(this.indexTestFile, 'test/scripts/config.js', ['../app/bower_components/requirejs/require.js'], {
-		'data-main': '../app/scripts/config'
+	this.indexTestFile = this.appendScripts(this.indexTestFile, 'test/scripts/config.js', ['../bower_components/requirejs/require.js'], {
+		'data-main': '../scripts/config'
 	});
 
 	// Add a basic AMD module for testing

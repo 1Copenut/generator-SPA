@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 	      tasks: ['sass']
 	    },
 			html: {
-				files: ['app/**/*.html']
+				files: ['app/**/*.html', 'test/index.html']
 			},
 			scripts: {
 				files: ['app/scripts/**/*.js', '!app/scripts/config.js', '/test/scripts/tests/*.js'],
@@ -60,7 +60,7 @@ module.exports = function (grunt) {
 		open : {
 			dev : {
 			  path: 'http://127.0.0.1:3000/',
-			  app: 'Google Chrome Canary'
+			  app: 'Google Chrome'
 			}
 		},
 
