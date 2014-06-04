@@ -1,5 +1,5 @@
 {
-  "name": "singlepageapp",
+  "name": "<%= _.slugify(spaName) %>",
   "version": "0.0.0",
   "dependencies": {},
 	"devDependencies": {

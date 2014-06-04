@@ -2,3 +2,5 @@ node_modules/
 temp/
 
 *.swp
+
+*.DS_Store
