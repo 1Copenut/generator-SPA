@@ -32,18 +32,28 @@ module.exports = function (grunt) {
 					sourcemap: true
 				},
 				files: {
-					'app/styles/css/main.css': 'app/styles/sass/main.scss'
+					'app/styles/css/main.css': 'app/styles/scss/main.scss'
 				}
 			}
 		},
 		
+		scsslint: {
+			allFiles: [
+				'app/styles/scss/**/*.scss'
+			],
+
+			options: {
+				colorizeOutput: true
+			}
+		},
+
 		watch: {
 	    options: {
 	      livereload: true
 	    },
 	    css: {
-	      files: ['app/styles/sass/**/*.scss'],
-	      tasks: ['sass']
+	      files: ['app/styles/scss/**/*.scss'],
+	      tasks: ['scsslint', 'sass']
 	    },
 			html: {
 				files: ['app/**/*.html', 'test/index.html']
@@ -62,14 +72,6 @@ module.exports = function (grunt) {
 			  path: 'http://127.0.0.1:3000/',
 			  app: 'Google Chrome'
 			}
-		},
-
-		mocha: {
-			browser: ['test/**/*.html'],
-			options: {
-				reporter: 'Spec',
-				run: true
-			}
 		}
 	});
 
@@ -78,8 +80,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-mocha');
 	
 	grunt.registerTask('server', ['express:dev', 'open:dev', 'watch']);
-	grunt.registerTask('test', ['mocha']);
 };
