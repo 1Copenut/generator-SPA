@@ -58,8 +58,8 @@ SpaGenerator.prototype.projectfiles = function projectfiles() {
 
 // Create the reset, main and mocha stylesheets
 SpaGenerator.prototype.styles = function styles() {
-	this.copy('main.scss', 'app/styles/sass/main.scss');
-	this.copy('_reset.scss', 'app/styles/sass/_reset.scss');
+	this.copy('main.scss', 'app/styles/scss/main.scss');
+	this.copy('_reset.scss', 'app/styles/scss/_reset.scss');
 	this.copy('main.css', 'app/styles/css/main.css');
 	this.copy('mocha.css', 'test/css/mocha.css');
 };
@@ -143,7 +143,7 @@ SpaGenerator.prototype.app = function app() {
 	this.mkdir('app/templates');
 	this.mkdir('app/styles');
 	this.mkdir('app/styles/css');
-	this.mkdir('app/styles/sass');
+	this.mkdir('app/styles/scss');
 	this.mkdir('app/imgs');
 	this.mkdir('app/scripts');
 
