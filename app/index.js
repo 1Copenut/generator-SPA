@@ -50,10 +50,11 @@ SpaGenerator.prototype.gruntfile = function gruntfile() {
 	this.template('Gruntfile.js');
 }
 
-// Copy my editor config and jshint parameters
+// Copy my editor config, jshint and scsslint parameters
 SpaGenerator.prototype.projectfiles = function projectfiles() {
 	this.copy('editorconfig', '.editorconfig');
 	this.copy('jshintrc', '.jshintrc');
+	this.copy('scss-lint.yml', '.scss-lint.yml');
 };
 
 // Create the reset, main and mocha stylesheets

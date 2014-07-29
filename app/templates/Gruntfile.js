@@ -43,7 +43,9 @@ module.exports = function (grunt) {
 			],
 
 			options: {
-				colorizeOutput: true
+	      config: '.scss-lint.yml',
+	      colorizeOutput: true,
+	      reporterOutput: null
 			}
 		},
 
@@ -53,7 +55,7 @@ module.exports = function (grunt) {
 	    },
 	    css: {
 	      files: ['app/styles/scss/**/*.scss'],
-	      tasks: ['scsslint', 'sass']
+	      tasks: ['sass', 'scsslint']
 	    },
 			html: {
 				files: ['app/**/*.html', 'test/index.html']
@@ -80,6 +82,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-scss-lint');
 	
 	grunt.registerTask('server', ['express:dev', 'open:dev', 'watch']);
 };
