@@ -43,9 +43,9 @@ module.exports = function (grunt) {
 			],
 
 			options: {
-	      config: '.scss-lint.yml',
-	      colorizeOutput: true,
-	      reporterOutput: null
+				config: '.scss-lint.yml',
+				colorizeOutput: true,
+				reporterOutput: null
 			}
 		},
 
