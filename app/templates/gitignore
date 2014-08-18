@@ -1,5 +1,8 @@
 node_modules/
+bower_components/
 temp/
 
+*.log
 *.swp
 *.DS_Store
+*.css
